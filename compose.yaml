@@ -1,0 +1,29 @@
+name: minions-compose
+
+services:
+  nginx:
+    build: .
+    environment:
+      # Fly Compose-containere deler netværk og kommunikerer via localhost.
+      API_HOST: "127.0.0.1"
+      WEB_HOST: "127.0.0.1"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - api
+      - web
+
+  api:
+    image: kristianurup/minions-api:latest
+    environment:
+      ASPNETCORE_HTTP_PORTS: "4000"
+    expose:
+      - "4000"
+
+  web:
+    image: kristianurup/minions-web:latest
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+    expose:
+      - "3000"
