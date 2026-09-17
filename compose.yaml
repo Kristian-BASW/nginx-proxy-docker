@@ -4,7 +4,6 @@ services:
   nginx:
     build: .
     environment:
-      # Fly Compose-containere deler netværk og kommunikerer via localhost.
       API_HOST: "127.0.0.1"
       WEB_HOST: "127.0.0.1"
     ports:
