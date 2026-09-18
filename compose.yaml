@@ -13,14 +13,14 @@ services:
       - web
 
   api:
-    image: kristianurup/minions-api:latest
+    image: <dockerhub-account>/minions-api:latest
     environment:
       ASPNETCORE_HTTP_PORTS: "4000"
     expose:
       - "4000"
 
   web:
-    image: kristianurup/minions-web:latest
+    image: <dockerhub-account>/minions-web:latest
     environment:
       NODE_ENV: production
       PORT: "3000"
